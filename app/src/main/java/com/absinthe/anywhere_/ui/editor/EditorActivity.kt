@@ -20,6 +20,7 @@ import com.absinthe.anywhere_.AnywhereApplication
 import com.absinthe.anywhere_.BaseActivity
 import com.absinthe.anywhere_.R
 import com.absinthe.anywhere_.constants.AnywhereType
+import com.absinthe.anywhere_.constants.Const
 import com.absinthe.anywhere_.constants.GlobalValues
 import com.absinthe.anywhere_.constants.OnceTag
 import com.absinthe.anywhere_.databinding.ActivityEditorBinding
@@ -30,6 +31,10 @@ import com.absinthe.anywhere_.services.overlay.IOverlayService
 import com.absinthe.anywhere_.services.overlay.OverlayService
 import com.absinthe.anywhere_.ui.dialog.EXTRA_FROM_WORKFLOW
 import com.absinthe.anywhere_.ui.editor.impl.WorkflowEditorFragment
+import com.absinthe.anywhere_.ui.list.AppListActivity
+import com.absinthe.anywhere_.ui.list.EXTRA_APP_LIST_ENTRY_MODE
+import com.absinthe.anywhere_.ui.list.EXTRA_PACKAGE_NAME as EXTRA_SELECTED_PACKAGE_NAME
+import com.absinthe.anywhere_.ui.list.MODE_SELECT
 import com.absinthe.anywhere_.utils.*
 import com.absinthe.anywhere_.utils.AppUtils.atLeastNMR1
 import com.absinthe.anywhere_.utils.AppUtils.atLeastR
@@ -115,6 +120,16 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
       setResult(Activity.RESULT_OK)
       super.onBackPressed()
     }
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    if (requestCode == Const.REQUEST_CODE_APP_LIST_SELECT) {
+      data?.getStringExtra(EXTRA_SELECTED_PACKAGE_NAME)?.let { packageName ->
+        updateCustomIcon(UxUtils.createAppIconUri(packageName))
+        onBackPressed()
+      }
+    }
+    super.onActivityResult(requestCode, resultCode, data)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -297,24 +312,14 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
             )
           }
           R.id.custom_icon -> {
-            try {
-              setDocumentResult("image/*") {
-                val ae = entity.copy().apply {
-                  iconUri = it.toString()
-                }
-                AnywhereApplication.sRepository.update(ae)
-                onBackPressed()
-              }
-            } catch (e: ActivityNotFoundException) {
-              e.printStackTrace()
-              ToastUtil.makeText(R.string.toast_no_document_app)
+            if (entity.type == AnywhereType.Card.WORKFLOW) {
+              showWorkflowCustomIconSourceDialog()
+            } else {
+              chooseCustomIconFromFile()
             }
           }
           R.id.restore_icon -> {
-            val ae = entity.copy().apply {
-              iconUri = ""
-            }
-            AnywhereApplication.sRepository.update(ae)
+            updateCustomIcon("")
             onBackPressed()
           }
           R.id.share_to_cloud -> {
@@ -343,6 +348,50 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
         entity.type != AnywhereType.Card.IMAGE && entity.type != AnywhereType.Card.FILE
 
       invalidate()
+    }
+  }
+
+  private fun showWorkflowCustomIconSourceDialog() {
+    AnywhereDialogBuilder(this)
+      .setTitle(R.string.menu_custom_icon)
+      .setItems(
+        arrayOf(
+          getString(R.string.custom_icon_source_app),
+          getString(R.string.custom_icon_source_file)
+        )
+      ) { _, which ->
+        when (which) {
+          0 -> startActivityForResult(
+            Intent(this, AppListActivity::class.java).apply {
+              putExtra(EXTRA_APP_LIST_ENTRY_MODE, MODE_SELECT)
+            },
+            Const.REQUEST_CODE_APP_LIST_SELECT
+          )
+          1 -> chooseCustomIconFromFile()
+        }
+      }
+      .show()
+  }
+
+  private fun chooseCustomIconFromFile() {
+    try {
+      setDocumentResult("image/*") {
+        updateCustomIcon(it.toString())
+        onBackPressed()
+      }
+    } catch (e: ActivityNotFoundException) {
+      e.printStackTrace()
+      ToastUtil.makeText(R.string.toast_no_document_app)
+    }
+  }
+
+  private fun updateCustomIcon(iconUri: String) {
+    entity = entity.copy().apply {
+      this.iconUri = iconUri
+    }
+    AnywhereApplication.sRepository.update(entity)
+    if (atLeastNMR1()) {
+      ShortcutsUtils.updateShortcut(entity)
     }
   }
 

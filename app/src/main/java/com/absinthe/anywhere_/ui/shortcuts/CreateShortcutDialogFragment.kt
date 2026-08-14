@@ -46,7 +46,7 @@ class CreateShortcutDialogFragment : AnywhereDialogFragment() {
     mBuilder.apply {
       etName.setText(entity.appName)
       ivIcon.apply {
-        setImageDrawable(UxUtils.getAppIcon(Utils.getApp(), entity, 45.dp))
+        setImageDrawable(UxUtils.getEntityIcon(Utils.getApp(), entity, 45.dp))
         setOnClickListener {
           imageResultLauncher.launch("image/*")
         }

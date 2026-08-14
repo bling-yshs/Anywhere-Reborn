@@ -257,6 +257,11 @@ class BaseCardAdapter(
         .load(UxUtils.getAppIcon(context, item, 45.dp))
         .diskCacheStrategy(DiskCacheStrategy.NONE)
         .into(itemView.icon)
+    } else if (UxUtils.getAppIconPackageName(item.iconUri) != null) {
+      Glide.with(context.applicationContext)
+        .load(UxUtils.getEntityIcon(context, item, 45.dp))
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .into(itemView.icon)
     } else {
       Glide.with(context.applicationContext)
         .load(item.iconUri)
@@ -431,13 +436,13 @@ class BaseCardAdapter(
           if (atLeastO()) {
             ShortcutsUtils.addPinnedShortcut(
               entity,
-              UxUtils.getAppIcon(Utils.getApp(), entity, 45.dp),
+              UxUtils.getEntityIcon(Utils.getApp(), entity, 45.dp),
               entity.appName
             )
           } else {
             ShortcutsUtils.addHomeShortcutPreO(
               entity,
-              UxUtils.getAppIcon(Utils.getApp(), entity, 45.dp),
+              UxUtils.getEntityIcon(Utils.getApp(), entity, 45.dp),
               entity.appName
             )
           }

@@ -53,6 +53,17 @@ import java.util.*
 
 object UxUtils {
 
+  private const val APP_ICON_URI_PREFIX = "app-icon://"
+
+  fun createAppIconUri(packageName: String): String = "$APP_ICON_URI_PREFIX$packageName"
+
+  fun getAppIconPackageName(iconUri: String?): String? {
+    if (iconUri.isNullOrBlank() || !iconUri.startsWith(APP_ICON_URI_PREFIX)) {
+      return null
+    }
+    return iconUri.removePrefix(APP_ICON_URI_PREFIX).takeIf { it.isNotBlank() }
+  }
+
   /**
    * Get app icon by package name
    *
@@ -105,8 +116,12 @@ object UxUtils {
     }
   }
 
-  fun getEntityIcon(context: Context, entity: AnywhereEntity, size: Int): Drawable =
-    try {
+  fun getEntityIcon(context: Context, entity: AnywhereEntity, size: Int): Drawable {
+    getAppIconPackageName(entity.iconUri)?.let { packageName ->
+      return getAppIcon(context, packageName) ?: getAppIcon(context, entity, size)
+    }
+
+    return try {
       Drawable.createFromStream(
         context.contentResolver.openInputStream(Uri.parse(entity.iconUri)),
         null
@@ -115,6 +130,7 @@ object UxUtils {
       Timber.e(e)
       getAppIcon(context, entity, size)
     } ?: getAppIcon(context, entity, size)
+  }
 
   /**
    * get action bar title by working mode

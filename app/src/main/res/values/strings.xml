@@ -184,6 +184,8 @@
   <string name="menu_share_card">Share card</string>
   <string name="menu_custom_icon">Custom icon</string>
   <string name="menu_restore_icon">Restore icon</string>
+  <string name="custom_icon_source_app">Choose from installed apps</string>
+  <string name="custom_icon_source_file">Choose from files</string>
   <string name="menu_share_to_cloud">Share to cloud</string>
 
   <!--  Settings  -->
