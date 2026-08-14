@@ -43,6 +43,17 @@ android {
     viewBinding = true
   }
 
+  signingConfigs {
+    create("release") {
+      System.getenv("ANDROID_KEYSTORE_FILE")?.takeIf { it.isNotBlank() }?.let {
+        storeFile = file(it)
+        storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+        keyAlias = System.getenv("ANDROID_KEY_ALIAS")
+        keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+      }
+    }
+  }
+
   buildTypes {
     debug {
       applicationIdSuffix = ".debug"
@@ -50,6 +61,7 @@ android {
       buildConfigField("boolean", "BETA", "true")
     }
     release {
+      signingConfig = signingConfigs.getByName("release")
       isMinifyEnabled = true
       isShrinkResources = true
       proguardFiles(
@@ -132,6 +144,7 @@ val optimizeReleaseRes: Task = task("optimizeReleaseRes").doLast {
     "intermediates",
     "optimized_processed_res",
     "release",
+    "optimizeReleaseResources",
     "resources-release-optimize.ap_"
   )
   val optimized = File("${zip}.opt")
