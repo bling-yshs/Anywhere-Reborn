@@ -7,7 +7,6 @@ import cn.vove7.andro_accessibility_api.AccessibilityApi
 import com.absinthe.anywhere_.database.AnywhereRepository
 import com.absinthe.anywhere_.model.Settings
 import com.absinthe.anywhere_.services.IzukoService
-import com.absinthe.anywhere_.utils.manager.IzukoHelper.checkSignature
 import com.absinthe.anywhere_.utils.manager.PoliceMan
 import com.absinthe.anywhere_.utils.timber.ReleaseTree
 import com.absinthe.anywhere_.utils.timber.ThreadAwareDebugTree
@@ -28,7 +27,6 @@ class AnywhereApplication : Application() {
     if (BuildConfig.DEBUG) {
       Timber.plant(ThreadAwareDebugTree())
     } else {
-      checkSignature()
       PoliceMan.checkApplicationClass(this)
       PoliceMan.checkPMProxy(this)
       Timber.plant(ReleaseTree())

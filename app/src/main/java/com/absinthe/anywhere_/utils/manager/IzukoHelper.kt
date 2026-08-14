@@ -12,6 +12,4 @@ object IzukoHelper {
   val cipherKey: String
     external get
 
-  external fun checkSignature()
-
 }
