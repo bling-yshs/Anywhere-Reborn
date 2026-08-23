@@ -14,14 +14,15 @@ val verName = "2.5.5"
 val verCode = 2050500
 
 android {
-  compileSdk = 34
-  ndkVersion = "25.0.8775105"
+  compileSdk = 36
+  buildToolsVersion = "36.0.0"
+  ndkVersion = "27.3.13750724"
 
   defaultConfig {
     applicationId = "com.yshs.anywhere_"
     namespace = "com.yshs.anywhere_"
     minSdk = 23
-    targetSdk = 33
+    targetSdk = 36
     versionCode = verCode
     versionName = verName
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

@@ -122,10 +122,12 @@ class AppDetailActivity : AppBarActivity<ActivityAppDetailBinding>(),
           } else {
             PackageManager.GET_DISABLED_COMPONENTS
           }
-          packageManager.getPackageArchiveInfo(
-            packageInfo.applicationInfo.sourceDir,
-            PackageManager.GET_ACTIVITIES or pmFlag
-          )
+          packageInfo.applicationInfo?.sourceDir?.let { sourceDir ->
+            packageManager.getPackageArchiveInfo(
+              sourceDir,
+              PackageManager.GET_ACTIVITIES or pmFlag
+            )
+          }
         }
 
         appPackageInfo?.activities?.let { activities ->

@@ -138,13 +138,15 @@ object AppUtils {
       val packageInfos = packageManager.getInstalledPackages(0)
 
       for (packageInfo in packageInfos) {
+        val applicationInfo = packageInfo.applicationInfo ?: continue
+
         //Filter system apps
         if (!showSystem) {
-          if (ApplicationInfo.FLAG_SYSTEM and packageInfo.applicationInfo.flags != 0) {
+          if (ApplicationInfo.FLAG_SYSTEM and applicationInfo.flags != 0) {
             continue
           }
         }
-        if (packageInfo.applicationInfo.loadIcon(packageManager) == null) {
+        if (applicationInfo.loadIcon(packageManager) == null) {
           continue
         }
 
@@ -153,11 +155,11 @@ object AppUtils {
           packageName = packageInfo.packageName,
           appName = AppUtils.getAppName(packageInfo.packageName),
           icon = if (GlobalValues.iconPack == Const.DEFAULT_ICON_PACK || GlobalValues.iconPack.isEmpty()) {
-            packageInfo.applicationInfo.loadIcon(packageManager)
+            applicationInfo.loadIcon(packageManager)
           } else {
             com.yshs.anywhere_.model.Settings.iconPack?.getDrawableIconForPackage(
               packageInfo.packageName,
-              packageInfo.applicationInfo.loadIcon(packageManager)
+              applicationInfo.loadIcon(packageManager)
             )
               ?: ContextCompat.getDrawable(Utils.getApp(), R.drawable.ic_logo)!!
           },
