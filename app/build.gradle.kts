@@ -18,8 +18,8 @@ android {
   ndkVersion = "25.0.8775105"
 
   defaultConfig {
-    applicationId = "com.absinthe.anywhere_"
-    namespace = "com.absinthe.anywhere_"
+    applicationId = "com.yshs.anywhere_"
+    namespace = "com.yshs.anywhere_"
     minSdk = 23
     targetSdk = 33
     versionCode = verCode

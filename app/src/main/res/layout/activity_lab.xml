@@ -8,7 +8,7 @@
   app:consumeSystemWindowsInsets="start|end"
   app:edgeToEdge="true"
   app:fitsSystemWindowsInsets="start|end"
-  tools:context="com.absinthe.anywhere_.ui.settings.LabActivity">
+  tools:context="com.yshs.anywhere_.ui.settings.LabActivity">
 
   <include
     android:id="@+id/toolbar"
@@ -16,7 +16,7 @@
 
   <androidx.fragment.app.FragmentContainerView
     android:id="@+id/fragment_container_view"
-    android:name="com.absinthe.anywhere_.ui.settings.LabActivity$LabFragment"
+    android:name="com.yshs.anywhere_.ui.settings.LabActivity$LabFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
