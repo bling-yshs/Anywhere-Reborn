@@ -3,6 +3,8 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -298,7 +300,7 @@
       android:label="@string/card_editor_title">
       <intent-filter>
         <category android:name="android.intent.category.DEFAULT" />
-        <action android:name="com.absinthe.anywhere_.intent.action.EDITOR" />
+        <action android:name="com.yshs.anywhere_.intent.action.EDITOR" />
       </intent-filter>
     </activity>
 
@@ -456,12 +458,18 @@
     <service
       android:name=".services.WorkflowIntentService"
       android:exported="true"
-      android:permission="android.permission.BIND_JOB_SERVICE" />
+      android:foregroundServiceType="specialUse"
+      android:permission="android.permission.BIND_JOB_SERVICE">
+      <property
+        android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+        android:value="Runs user-configured automation workflows" />
+    </service>
 
     <!--    Backup service    -->
     <service
       android:name=".services.BackupIntentService"
       android:exported="false"
+      android:foregroundServiceType="dataSync"
       android:permission="android.permission.BIND_JOB_SERVICE" />
     <!--    Device Control    -->
     <service
@@ -531,8 +539,8 @@
       android:name=".provider.CoreProvider"
       android:authorities="${applicationId}.coreprovider"
       android:exported="true"
-      android:readPermission="com.absinthe.anywhere_.provider.READ"
-      android:writePermission="com.absinthe.anywhere_.provider.WRITE" />
+      android:readPermission="com.yshs.anywhere_.provider.READ"
+      android:writePermission="com.yshs.anywhere_.provider.WRITE" />
 
     <meta-data
       android:name="android.max_aspect"

@@ -14,14 +14,15 @@ val verName = "2.5.5"
 val verCode = 2050500
 
 android {
-  compileSdk = 34
-  ndkVersion = "25.0.8775105"
+  compileSdk = 36
+  buildToolsVersion = "36.0.0"
+  ndkVersion = "27.3.13750724"
 
   defaultConfig {
-    applicationId = "com.absinthe.anywhere_"
-    namespace = "com.absinthe.anywhere_"
+    applicationId = "com.yshs.anywhere_"
+    namespace = "com.yshs.anywhere_"
     minSdk = 23
-    targetSdk = 33
+    targetSdk = 36
     versionCode = verCode
     versionName = verName
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -43,6 +44,17 @@ android {
     viewBinding = true
   }
 
+  signingConfigs {
+    create("release") {
+      System.getenv("ANDROID_KEYSTORE_FILE")?.takeIf { it.isNotBlank() }?.let {
+        storeFile = file(it)
+        storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+        keyAlias = System.getenv("ANDROID_KEY_ALIAS")
+        keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+      }
+    }
+  }
+
   buildTypes {
     debug {
       applicationIdSuffix = ".debug"
@@ -50,6 +62,7 @@ android {
       buildConfigField("boolean", "BETA", "true")
     }
     release {
+      signingConfig = signingConfigs.getByName("release")
       isMinifyEnabled = true
       isShrinkResources = true
       proguardFiles(
@@ -68,8 +81,12 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+  }
+
+  kotlinOptions {
+    jvmTarget = "21"
   }
 
   androidComponents.onVariants { v ->
@@ -128,6 +145,7 @@ val optimizeReleaseRes: Task = task("optimizeReleaseRes").doLast {
     "intermediates",
     "optimized_processed_res",
     "release",
+    "optimizeReleaseResources",
     "resources-release-optimize.ap_"
   )
   val optimized = File("${zip}.opt")

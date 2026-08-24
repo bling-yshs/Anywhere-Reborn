@@ -22,7 +22,7 @@
       app:title="@string/title_activity_defrost">
 
       <intent
-        android:targetClass="com.absinthe.anywhere_.ui.settings.DefrostActivity"
+        android:targetClass="com.yshs.anywhere_.ui.settings.DefrostActivity"
         android:targetPackage="@string/application_id" />
     </Preference>
 
@@ -33,7 +33,7 @@
       app:title="@string/settings_backup_and_restore">
 
       <intent
-        android:targetClass="com.absinthe.anywhere_.ui.backup.BackupActivity"
+        android:targetClass="com.yshs.anywhere_.ui.backup.BackupActivity"
         android:targetPackage="@string/application_id" />
 
     </Preference>
@@ -120,7 +120,7 @@
       app:title="@string/settings_tiles">
 
       <intent
-        android:targetClass="com.absinthe.anywhere_.ui.settings.TileSettingsActivity"
+        android:targetClass="com.yshs.anywhere_.ui.settings.TileSettingsActivity"
         android:targetPackage="@string/application_id" />
     </Preference>
 
@@ -161,7 +161,7 @@
       app:title="@string/settings_lab">
 
       <intent
-        android:targetClass="com.absinthe.anywhere_.ui.settings.LabActivity"
+        android:targetClass="com.yshs.anywhere_.ui.settings.LabActivity"
         android:targetPackage="@string/application_id" />
     </Preference>
 
@@ -184,7 +184,7 @@
       app:title="@string/settings_about">
 
       <intent
-        android:targetClass="com.absinthe.anywhere_.ui.about.AboutActivity"
+        android:targetClass="com.yshs.anywhere_.ui.about.AboutActivity"
         android:targetPackage="@string/application_id" />
 
     </Preference>

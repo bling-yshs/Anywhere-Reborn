@@ -18,7 +18,7 @@
 #-obfuscationdictionary dictionary.txt
 #-classobfuscationdictionary dictionary.txt
 #-packageobfuscationdictionary dictionary.txt
--repackageclasses com.absinthe.anywhere_
+-repackageclasses com.yshs.anywhere_
 
 -dontpreverify
 
