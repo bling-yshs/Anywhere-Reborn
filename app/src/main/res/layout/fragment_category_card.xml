@@ -8,7 +8,7 @@
   app:edgeToEdge="true"
   app:fitsSystemWindowsInsets="start|end">
 
-  <com.yshs.anywhere_.view.home.FadingEdgeRecyclerView
+  <com.absinthe.anywhere_.view.home.FadingEdgeRecyclerView
     android:id="@+id/recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

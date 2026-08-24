@@ -8,7 +8,7 @@
   app:consumeSystemWindowsInsets="start|end"
   app:edgeToEdge="true"
   app:fitsSystemWindowsInsets="start|end"
-  tools:context="com.yshs.anywhere_.ui.list.AppDetailActivity">
+  tools:context="com.absinthe.anywhere_.ui.list.AppDetailActivity">
 
   <include
     android:id="@+id/toolbar"

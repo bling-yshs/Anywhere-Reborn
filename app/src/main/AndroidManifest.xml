@@ -298,7 +298,7 @@
       android:label="@string/card_editor_title">
       <intent-filter>
         <category android:name="android.intent.category.DEFAULT" />
-        <action android:name="com.yshs.anywhere_.intent.action.EDITOR" />
+        <action android:name="com.absinthe.anywhere_.intent.action.EDITOR" />
       </intent-filter>
     </activity>
 
@@ -531,8 +531,8 @@
       android:name=".provider.CoreProvider"
       android:authorities="${applicationId}.coreprovider"
       android:exported="true"
-      android:readPermission="com.yshs.anywhere_.provider.READ"
-      android:writePermission="com.yshs.anywhere_.provider.WRITE" />
+      android:readPermission="com.absinthe.anywhere_.provider.READ"
+      android:writePermission="com.absinthe.anywhere_.provider.WRITE" />
 
     <meta-data
       android:name="android.max_aspect"

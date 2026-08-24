@@ -22,7 +22,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.yshs.anywhere_.view.home.CustomFullDraggableContainer
+    <com.absinthe.anywhere_.view.home.CustomFullDraggableContainer
       android:id="@+id/full_draggable_container"
       android:layout_width="match_parent"
       android:layout_height="match_parent">
@@ -61,7 +61,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-              <com.yshs.anywhere_.view.home.TextSwitcherView
+              <com.absinthe.anywhere_.view.home.TextSwitcherView
                 android:id="@+id/ts_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.yshs.anywhere_.view.home.MySpeedDialView
+        <com.absinthe.anywhere_.view.home.MySpeedDialView
           android:id="@+id/fab"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
 
       </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    </com.yshs.anywhere_.view.home.CustomFullDraggableContainer>
+    </com.absinthe.anywhere_.view.home.CustomFullDraggableContainer>
 
     <com.google.android.material.navigation.NavigationView
       android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
           android:layout_height="match_parent"
           android:fillViewport="true">
 
-          <com.yshs.anywhere_.view.home.DrawerRecyclerView
+          <com.absinthe.anywhere_.view.home.DrawerRecyclerView
             android:id="@+id/rv_pages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

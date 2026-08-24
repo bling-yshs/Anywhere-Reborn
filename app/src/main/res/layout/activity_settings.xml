@@ -16,7 +16,7 @@
 
   <androidx.fragment.app.FragmentContainerView
     android:id="@+id/fragment_container_view"
-    android:name="com.yshs.anywhere_.ui.settings.SettingsActivity$SettingsFragment"
+    android:name="com.absinthe.anywhere_.ui.settings.SettingsActivity$SettingsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 

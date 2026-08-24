@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <!--  General  -->
-  <string name="application_id" translatable="false">com.yshs.anywhere_</string>
+  <string name="application_id" translatable="false">com.absinthe.anywhere_</string>
   <string name="app_name">Anywhere-</string>
   <string name="settings_title">Settings</string>
   <string name="setup_title">Setup</string>
@@ -114,7 +114,7 @@
   <string name="bsd_text_input_layout_class_name_helper_text">App\'s class name, usually default</string>
   <string name="bsd_text_input_layout_description_helper_text">Describe your Anywhere- card</string>
   <string name="bsd_text_input_layout_action_helper_text">android.intent.action.VIEW as default value</string>
-  <string name="bsd_text_input_layout_br_action_helper_text">com.yshs.anywhere_.BROADCAST as default value</string>
+  <string name="bsd_text_input_layout_br_action_helper_text">com.absinthe.anywhere_.BROADCAST as default value</string>
   <string name="bsd_text_input_layout_br_package_helper_text">Specify a package name to send broadcast to the specified application</string>
   <string name="bsd_text_input_layout_br_class_helper_text">Specify a class name to send broadcast to the specified application</string>
   <string name="bsd_text_input_layout_data_helper_text">You can attach a URI data</string>
@@ -465,7 +465,7 @@
   <string name="defrost_mode_shizuku_summary">Requires Shizuku activated by root method</string>
 
   <string name="defrost_mode_dpm_desc">Active Anywhere- as a Device Policy Manager to gain the ability to defrost apps.</string>
-  <string name="defrost_mode_dpm_addition"><![CDATA[<b>Connect to PC and enter adb command:</b><br><i>adb shell dpm set-device-owner com.yshs.anywhere_/.receiver.AdminReceiver</i>]]></string>
+  <string name="defrost_mode_dpm_addition"><![CDATA[<b>Connect to PC and enter adb command:</b><br><i>adb shell dpm set-device-owner com.absinthe.anywhere_/.receiver.AdminReceiver</i>]]></string>
 
   <!--  Cloud  -->
   <string name="cloud_rules_email_title" translatable="false">New Cloud Rule</string>

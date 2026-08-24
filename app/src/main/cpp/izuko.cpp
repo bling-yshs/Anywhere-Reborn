@@ -33,13 +33,13 @@ static jobject getApplication(JNIEnv *env) {
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_yshs_anywhere_1_utils_manager_IzukoHelper_getCipherKey(JNIEnv *env, jclass clazz) {
+Java_com_absinthe_anywhere_1_utils_manager_IzukoHelper_getCipherKey(JNIEnv *env, jclass clazz) {
     return env->NewStringUTF(CIPHER_KEY);
 }
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_com_yshs_anywhere_1_utils_manager_IzukoHelper_isHitagi(JNIEnv *env, jobject clazz,
+Java_com_absinthe_anywhere_1_utils_manager_IzukoHelper_isHitagi(JNIEnv *env, jobject clazz,
                                                                 jstring token) {
     jobject context = getApplication(env);
     // get Context object
@@ -56,7 +56,7 @@ Java_com_yshs_anywhere_1_utils_manager_IzukoHelper_isHitagi(JNIEnv *env, jobject
     auto android_id = (jstring) env->CallStaticObjectMethod(androidSettingsClass, methodId,
                                                             resolverInstance, param_android_id);
 
-    jclass cipherClass = env->FindClass("com/yshs/anywhere_/utils/CipherUtils");
+    jclass cipherClass = env->FindClass("com/absinthe/anywhere_/utils/CipherUtils");
     jmethodID encryptMethodId = env->GetStaticMethodID(cipherClass, "encrypt",
             "(Ljava/lang/String;)Ljava/lang/String;");
     auto encrypt_android_id = (jstring) env->CallStaticObjectMethod(cipherClass, encryptMethodId, android_id);

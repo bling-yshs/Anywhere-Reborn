@@ -8,7 +8,7 @@
   app:consumeSystemWindowsInsets="start|end"
   app:edgeToEdge="true"
   app:fitsSystemWindowsInsets="start|end"
-  tools:context="com.yshs.anywhere_.ui.qrcode.QRCodeCollectionActivity">
+  tools:context="com.absinthe.anywhere_.ui.qrcode.QRCodeCollectionActivity">
 
   <include
     android:id="@+id/toolbar"

@@ -8,7 +8,7 @@
   app:consumeSystemWindowsInsets="start|end"
   app:edgeToEdge="true"
   app:fitsSystemWindowsInsets="start|end"
-  tools:context="com.yshs.anywhere_.ui.backup.BackupActivity">
+  tools:context="com.absinthe.anywhere_.ui.backup.BackupActivity">
 
   <include
     android:id="@+id/toolbar"
@@ -16,7 +16,7 @@
 
   <androidx.fragment.app.FragmentContainerView
     android:id="@+id/fragment_container_view"
-    android:name="com.yshs.anywhere_.ui.backup.BackupActivity$BackupFragment"
+    android:name="com.absinthe.anywhere_.ui.backup.BackupActivity$BackupFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
