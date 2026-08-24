@@ -312,11 +312,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
             )
           }
           R.id.custom_icon -> {
-            if (entity.type == AnywhereType.Card.WORKFLOW) {
-              showWorkflowCustomIconSourceDialog()
-            } else {
-              chooseCustomIconFromFile()
-            }
+            showCustomIconSourceDialog()
           }
           R.id.restore_icon -> {
             updateCustomIcon("")
@@ -351,7 +347,7 @@ class EditorActivity : BaseActivity<ActivityEditorBinding>() {
     }
   }
 
-  private fun showWorkflowCustomIconSourceDialog() {
+  private fun showCustomIconSourceDialog() {
     AnywhereDialogBuilder(this)
       .setTitle(R.string.menu_custom_icon)
       .setItems(
