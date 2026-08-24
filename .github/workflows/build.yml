@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - restore-original-package
 
 permissions:
   contents: read
