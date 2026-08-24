@@ -48,8 +48,13 @@ object StorageUtils {
         if (ae.type == AnywhereType.Card.IMAGE || ae.type == AnywhereType.Card.FILE) {
           continue
         }
-        ae.iconUri = ""
-        finalList.add(ae)
+        finalList.add(
+          ae.copy().apply {
+            if (UxUtils.getAppIconPackageName(iconUri) == null) {
+              iconUri = ""
+            }
+          }
+        )
       }
       val backupBean = BackupBean(finalList, pageList)
       Gson().toJson(backupBean)
