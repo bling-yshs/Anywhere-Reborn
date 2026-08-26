@@ -432,7 +432,12 @@
     <!--    Collector service    -->
     <service
       android:name=".services.overlay.CollectorService"
-      android:enabled="true" />
+      android:enabled="true"
+      android:foregroundServiceType="specialUse">
+      <property
+        android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+        android:value="Displays the collector and coordinate picker overlays while inspecting the current app" />
+    </service>
 
     <!--    Home launcher widget service    -->
     <service
